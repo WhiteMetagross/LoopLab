@@ -1,0 +1,30 @@
+\begin{table*}[!tbp]
+\caption{Common benchmark results across model and controller families.}
+\label{tab:screening}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabularx}{\textwidth}{@{}Yrrrrr@{}}
+\toprule
+Method & Claims wait $\downarrow$ & BPI wait $\downarrow$ & Factory tail $\downarrow$ & Bank profit $\uparrow$ & Bank refusals $\downarrow$ \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Deterministic reference}} \\
+FIFO / bank rule & $122.9\pm3.1$ & $55.9\pm0.5$ & $1051.0\pm25.4$ & $3378\pm45$ & $15.9\pm0.1$ \\
+\midrule\multicolumn{6}{@{}l}{\textit{ML only}} \\
+Regression & $55.6\pm1.3$ & $35.2\pm1.0$ & $714.4\pm19.3$ & $3780\pm83$ & $24.3\pm2.9$ \\
+Random Forest & $55.7\pm2.9$ & $36.8\pm0.9$ & $722.2\pm24.8$ & $3667\pm60$ & $26.8\pm2.2$ \\
+CatBoost & $55.9\pm2.9$ & $36.7\pm0.8$ & $722.2\pm25.7$ & $3759\pm109$ & $23.3\pm3.3$ \\
+XGBoost & $56.4\pm3.5$ & $36.6\pm1.0$ & $724.2\pm30.7$ & $3756\pm99$ & $23.6\pm2.4$ \\
+\midrule\multicolumn{6}{@{}l}{\textit{RL with best validation selected forecaster}} \\
+Q learning & $82.6\pm3.7$ & $41.7\pm0.8$ & $906.5\pm53.6$ & $3557\pm129$ & $14.8\pm0.4$ \\
+Fitted Q & $85.4\pm11.2$ & $40.9\pm1.9$ & $967.3\pm48.7$ & $3778\pm79$ & $20.5\pm1.5$ \\
+CQL $\alpha{=}0.1$ & $75.1\pm11.6$ & $40.0\pm2.5$ & $942.5\pm152.4$ & $3762\pm47$ & $17.9\pm2.0$ \\
+CQL $\alpha{=}0.5$ & $80.7\pm28.6$ & $40.9\pm1.2$ & $919.9\pm242.2$ & $3736\pm60$ & $16.4\pm1.7$ \\
+PPO & $95.1\pm29.8$ & $42.3\pm3.5$ & $1153.9\pm29.8$ & $3496\pm57$ & $34.0\pm0.2$ \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize
+Means $\pm$ SD across three random seeds. Routing columns report minutes. SimBank ML rows use refusal aware planners. RL rows use the best forecast family selected on validation, not every ML and RL pairing. Routing uses 256 workloads per seed. SimBank uses 30,000 cases per seed.
+\end{minipage}
+\end{table*}

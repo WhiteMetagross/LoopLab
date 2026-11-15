@@ -1,0 +1,64 @@
+{
+  "master_seed": 17,
+  "replicates": 3,
+  "domain_config": "configs/domain_loop_simulations.json",
+  "simbank_config": "configs/negotiation_independent.json",
+  "variant_namespace": {"smoke": 1331, "full": 1427},
+  "routing_namespace": {"smoke": 1511, "full": 1621},
+  "variants": {
+    "simclaims_queue": ["insurance", "configs/specialist_slot_search.json"],
+    "simfactory_queue": ["manufacturing", "configs/specialist_slot_search.json"],
+    "simfactory_tail": ["manufacturing", "configs/simfactory_tail_search.json"],
+    "simfactory_tail_guarded": ["manufacturing", "configs/simfactory_tail_guarded_search.json"],
+    "bpisim_queue": ["bpisim", "configs/specialist_slot_search.json"],
+    "bpisim_repeat": ["bpisim", "configs/bpisim_repeat_search.json"],
+    "bpisim_turnaround": ["bpisim", "configs/bpisim_turnaround_search.json"]
+  },
+  "learners": {
+    "q_learning_rate": 0.15,
+    "epsilon_start": 0.6,
+    "epsilon_end": 0.1,
+    "cql_alphas": [0.1, 0.5],
+    "history_ablation": true
+  },
+  "routing": {
+    "cases_per_workload": 80,
+    "slots": 10,
+    "effect": 0.25,
+    "primary_load": 1.2,
+    "training_loads": [0.6, 1.2],
+    "test_loads": [0.6, 1.2],
+    "test_effects": [0.0, 0.25, 0.5],
+    "difficulty_bins": 12,
+    "temperatures": [0.75, 1.0, 1.25, 1.5, 2.0],
+    "reward_weights": [1.0, 1.0, 0.25, 0.25, 2.0],
+    "minimum_repeat_reduction": 0.01,
+    "limits": {"elapsed_ratio": 1.05, "work_ratio": 1.1, "resolution_loss": 0.01, "specialist_share": 0.25}
+  },
+  "simbank": {
+    "scenario_base": 70000000,
+    "seed_stride": 1000000,
+    "smoke_offset": 10000000,
+    "phase_offsets": {"ml_fit": 0, "ml_calibration": 100000, "prediction_test": 200000, "offline": 300000, "online": 400000, "policy_validation": 500000, "evaluation": 600000},
+    "refusal_penalty": 500,
+    "profit_cql_reference": true,
+    "cancellation_penalty": 2000,
+    "mechanism_penalties": [0, 500, 1500, 3000],
+    "minimum_refusal_reduction": 0.01,
+    "profit_tolerance_fraction": 0.005,
+    "cancellation_tolerance_vs_ml": 0.005,
+    "cancellation_tolerance_vs_bank": 0.02
+  },
+  "smoke": {
+    "learners": {"trees": 8, "fitted_q_rounds": 2, "cql_updates": 8, "ppo_horizon": 48},
+    "routing": {"cases_per_workload": 24, "slots": 3, "ml_fit_workloads": 12, "ml_calibration_workloads": 4, "ml_test_workloads": 4, "scale_workloads": 4, "offline_workloads": 8, "online_workloads": 8, "validation_workloads": 5, "primary_workloads": 5, "sensitivity_workloads": 3},
+    "simbank": {"ml_fit": 550, "ml_calibration": 200, "prediction_test": 200, "offline": 350, "online": 320, "policy_validation": 40, "evaluation": 56},
+    "variants": {"cases_per_workload": 24, "slots": 3, "ml_fit_workloads": 12, "trees": 12, "workloads_per_search_block": 5, "search_rounds": 2, "population": 6, "elite": 2, "validation_workloads": 6, "evaluation_workloads": 8, "bootstrap_draws": 200}
+  },
+  "full": {
+    "learners": {"trees": 200, "fitted_q_rounds": 20, "cql_updates": 2000, "ppo_horizon": 1024},
+    "routing": {"ml_fit_workloads": 160, "ml_calibration_workloads": 40, "ml_test_workloads": 40, "scale_workloads": 40, "offline_workloads": 200, "online_workloads": 200, "validation_workloads": 60, "primary_workloads": 256, "sensitivity_workloads": 80},
+    "simbank": {"ml_fit": 10000, "ml_calibration": 2000, "prediction_test": 4000, "offline": 20000, "online": 20000, "policy_validation": 2000, "evaluation": 30000},
+    "variants": {"evaluation_workloads": 384}
+  }
+}

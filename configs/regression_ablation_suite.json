@@ -1,0 +1,105 @@
+{
+  "master_seed": 17,
+  "replicates": 3,
+  "domain_config": "configs/domain_loop_simulations.json",
+  "focused_config": "configs/focused_refinement_study.json",
+  "paper_config": "configs/focused_refinement_study.json",
+  "sources": {
+    "insurance": "runs/reproduction/full/focused/insurance",
+    "bpisim": "runs/reproduction/full/refined/bpisim",
+    "manufacturing": "runs/reproduction/full/refined/manufacturing",
+    "simbank": "runs/reproduction/full/refined/simbank"
+  },
+  "burst_size": 8,
+  "burst_gap_factor": 0.2,
+  "routing": {
+    "forecast_families": ["Regression"],
+    "cases_per_workload": 80,
+    "slots": 10,
+    "effect": 0.25,
+    "primary_load": 1.2,
+    "ml_fit_workloads": 160,
+    "difficulty_bins": 12,
+    "limits": {
+      "elapsed_ratio": 1.05,
+      "work_ratio": 1.1,
+      "resolution_loss": 0.01,
+      "specialist_share": 0.25
+    },
+    "episodic_search": {
+      "anchor_wait_weight": 0.04,
+      "rounds": 18,
+      "population": 24,
+      "elite": 5,
+      "blocks": 6,
+      "repeat_tolerance": 0.005,
+      "repeat_confidence_z": 1.645,
+      "minimum_validation_gain_fraction": 0.005,
+      "repeat_penalty": 3000.0,
+      "repeat_penalty_by_domain": {
+        "bpisim": 6000.0,
+        "manufacturing": 12000.0
+      },
+      "minimum_weight": 0.1,
+      "minimum_spread": 0.007,
+      "initial_spread": [0.04, 0.2, 0.08, 0.15, 0.08, 0.06, 0.15, 0.5, 0.4, 0.35, 0.2]
+    }
+  },
+  "bank": {
+    "scenario_base": 370000000,
+    "seed_stride": 1000000,
+    "test_offset": 100000,
+    "bias": 0.9,
+    "alpha": 0.1,
+    "minimum_ess": 50,
+    "forecast_family": "Regression"
+  },
+  "smoke": {
+    "namespace": 4511,
+    "logging_namespace": 4531,
+    "routing": {
+      "cases_per_workload": 24,
+      "slots": 3
+    },
+    "episodic_search": {
+      "rounds": 2,
+      "population": 5,
+      "elite": 2,
+      "blocks": 2
+    },
+    "training_workloads": 8,
+    "validation_workloads": 8,
+    "test_workloads": 8,
+    "bank_replay_limit": 400,
+    "bank_updates": 8,
+    "fitted_q_rounds": 2,
+    "trees": 8,
+    "bank_validation_cases": 60,
+    "bank_cases": 80,
+    "smoke_offset": 10000000,
+    "bank_seed_offset": 4,
+    "bank_fit": 180,
+    "bank_trees": 8,
+    "bootstrap_draws": 200
+  },
+  "full": {
+    "namespace": 4621,
+    "logging_namespace": 4631,
+    "routing": {},
+    "episodic_search": {},
+    "training_workloads": 144,
+    "validation_workloads": 120,
+    "test_workloads": 384,
+    "bank_replay_limit": null,
+    "bank_updates": 2000,
+    "fitted_q_rounds": 20,
+    "trees": 200,
+    "bank_validation_cases": 4000,
+    "bank_cases": 10000,
+    "smoke_offset": 0,
+    "bank_seed_offset": 4,
+    "bank_fit": 10000,
+    "bank_trees": 200,
+    "bootstrap_draws": 2500
+  }
+}

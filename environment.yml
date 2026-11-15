@@ -1,0 +1,18 @@
+name: iml-research
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.16
+  - pip=26.2.1
+  - pip:
+      - catboost==1.2.10
+      - joblib==1.6.0
+      - matplotlib==3.9.2
+      - numpy==2.0.2
+      - pandas==2.2.2
+      - pm4py==2.7.8.1
+      - scikit-learn==1.5.1
+      - scipy==1.13.1
+      - simpy==4.1.1
+      - threadpoolctl==3.7.0
+      - xgboost-cpu==3.2.0

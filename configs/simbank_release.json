@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/JakobDeMoorKULstudent/SimBank.git",
+  "tag": "v1.0.0",
+  "commit": "ac25e116c3d9a9bed3bf6aec0fd101baef0891ef",
+  "parameter_file": {
+    "name": "loan_log_['set_ir_3_levels']_100000_dataset_params",
+    "url": "https://drive.usercontent.google.com/download?id=1NKnTMXO7kD269TiirBgEo3EXxhnwt5LI&export=download&confirm=t",
+    "bytes": 1213,
+    "sha256": "d64b3a75429184869d1f6132d7af227f909f2d6b738295d1f1fd1c886e0aff52",
+    "pickle_scan": {
+      "sha256": "d64b3a75429184869d1f6132d7af227f909f2d6b738295d1f1fd1c886e0aff52",
+      "opcodes": 285,
+      "globals": [["datetime", "datetime"]]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "cases_per_workload": 80,
+  "slots": 10,
+  "load": 1.2,
+  "effect": 0.25,
+  "ml_fit_workloads": 80,
+  "difficulty_bins": 12,
+  "trees": 100,
+  "workloads_per_search_block": 32,
+  "search_blocks": 3,
+  "search_rounds": 9,
+  "population": 18,
+  "elite": 5,
+  "validation_workloads": 96,
+  "evaluation_workloads": 192,
+  "bootstrap_draws": 4000,
+  "baseline_wait_weights": [0.0, 0.02, 0.04, 0.08, 0.15, 0.3, 0.6, 1.0],
+  "limits": {"elapsed_ratio": 1.05, "work_ratio": 1.1, "resolution_loss": 0.01, "specialist_share": 0.25},
+  "minimum_queue_reduction_fraction": 0.05,
+  "repeat_noninferiority": 0.005,
+  "stage_cap_seconds": 180
+}

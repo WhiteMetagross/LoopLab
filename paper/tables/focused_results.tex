@@ -1,0 +1,21 @@
+\begin{table*}[!t]
+\caption{Focused held out comparisons using Regression forecasts.}
+\label{tab:focused}
+\centering\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabularx}{\textwidth}{@{}L{.58in}L{.90in}L{1.20in}L{1.15in}L{1.42in}Y@{}}
+\toprule
+Simulator & Control & Controller & Outcome $\downarrow$ & Gain $\uparrow$ [95\% CI] & Other outcome [95\% CI] \\
+\midrule
+SimClaims & Regression & Regression with episodic policy search & $55.85\to49.56$ queue min & $6.28\;[5.04,\,7.53]$ min $(11.25\%)$ & $0.322\;[0.216,\,0.421]$ more attempts/100 \\
+BPISim & Regression & Episodic policy search & $8974.01\to8963.69$ elapsed min & $10.32\;[-3.55,\,28.66]$ min $(0.11\%)$ & $0.140\;[-0.023,\,0.343]$ fewer attempts/100 \\
+SimFactory & Regression & Regression with safety constrained search & $688.88\to638.59$ tail min & $50.29\;[33.69,\,68.45]$ min $(7.30\%)$ & $0.405\;[0.267,\,0.551]$ more repairs/100 \\
+SimBank & Regression based dynamic planner & Regression informed CQL & $25.04\to19.29$ refusals/100 & $5.75\;[4.82,\,6.85]$ fewer/100 $(22.95\%)$ & $6.92\;[-67.93,\,93.57]$ profit \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize
+Lower primary outcomes are better. Gain is control minus controller. Means and paired 95\% intervals use three random seeds. The SimBank other outcome is native profit.
+\end{minipage}
+\end{table*}
